@@ -20,7 +20,7 @@
 
 ## MQTT
 
-Корінь топіків `weather_station/`. Кожне сенсорне повідомлення — JSON з `device_id`, `location`, `timestamp`, `sequence`, значенням, одиницею та станом датчика. Телеметрія має QoS 1 і retain; online/battery/diagnostics — retain; heartbeat публікується без retain. Last Will публікує `status/online=false`; при відновленні з'єднання стан стає `true`. Перепідключення збільшує затримку від 1 до 30 секунд. Keepalive — 30 секунд.
+Корінь топіків `weather_station/`. Кожне сенсорне повідомлення - JSON з `device_id`, `location`, `timestamp`, `sequence`, значенням, одиницею та станом датчика. Телеметрія має QoS 1 і retain; online/battery/diagnostics — retain; heartbeat публікується без retain. Last Will публікує `status/online=false`; при відновленні з'єднання стан стає `true`. Перепідключення збільшує затримку від 1 до 30 секунд. Keepalive - 30 секунд.
 
 Топіки команд: `weather_station/config/interval`, `weather_station/config/location`, `weather_station/config/calibration` або JSON команда в `weather_station/commands/config`.
 
