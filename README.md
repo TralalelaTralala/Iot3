@@ -1,9 +1,9 @@
-# IoT 3.1 — мультипротокольна метеостанція
+# IoT 3.1 - мультипротокольна метеостанція
 
 Навчальний проєкт об'єднує MQTT для телеметрії, HTTP REST для вебпанелі та BLE GATT для локального читання й налаштування. Є два варіанти запуску:
 
-1. **Емулятор для ПК** — Python генерує показання датчиків, публікує MQTT і піднімає REST-дашборд. BLE GATT-профіль можна перевірити через API навіть на комп'ютері без Bluetooth-адаптера.
-2. **Прошивка ESP32** — `firmware/` містить реальний клієнт MQTT, REST-сервер та BLE GATT peripheral із PIN-сполученням. Для фізичного радіозв'язку потрібні ESP32, BLE-адаптер на телефоні та сенсори.
+1. **Емулятор для ПК** - Python генерує показання датчиків, публікує MQTT і піднімає REST-дашборд. BLE GATT-профіль можна перевірити через API навіть на комп'ютері без Bluetooth-адаптера.
+2. **Прошивка ESP32** - `firmware/` містить реальний клієнт MQTT, REST-сервер та BLE GATT peripheral із PIN-сполученням. Для фізичного радіозв'язку потрібні ESP32, BLE-адаптер на телефоні та сенсори.
 
 Емулятор не видає програмні значення за реальні вимірювання. MQ-135 показує навчальний індекс із аналогового сигналу; для реального AQI/ppm потрібні калібрування та газова модель. Анемометр у комплекті замінено потенціометром.
 
@@ -14,7 +14,7 @@
 1. Запустіть `start.bat` подвійним клацанням або в PowerShell.
 2. Відкрийте <http://127.0.0.1:5000/>.
 3. Перевірте API на <http://127.0.0.1:5000/api/docs>.
-4. Зупинка — `Ctrl+C` у вікні консолі.
+4. Зупинка - `Ctrl+C` у вікні консолі.
 
 Перший запуск створює `.venv`, встановлює Flask і Paho MQTT, а з `config.example.json` створює `config.json`. Передавання даних через MQTT не потребує зовнішнього доступу до Інтернету.
 
@@ -75,14 +75,9 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:5000/api/config -ContentTyp
 
 ## Перевірки та звіт
 
-- `python -m unittest discover -s tests -v` — REST, валідація, CORS, OpenAPI і GATT-профіль.
-- `python tests/check_mqtt.py` — перевірка publish/subscribe та QoS/retain проти локального Mosquitto.
-- `report/practice_03_1_report.pdf` — звіт українською з архітектурою, таблицею протоколів, тестуванням і обмеженнями симуляції.
-- `iot3_project.zip` — повний код Python-емулятора, прошивки ESP32, панелі й тестів.
+- `python -m unittest discover -s tests -v` - REST, валідація, CORS, OpenAPI і GATT-профіль.
+- `python tests/check_mqtt.py` - перевірка publish/subscribe та QoS/retain проти локального Mosquitto.
+- `report/practice_03_1_report.pdf` - звіт українською з архітектурою, таблицею протоколів, тестуванням і обмеженнями симуляції.
+- `iot3_project.zip` - повний код Python-емулятора, прошивки ESP32, панелі й тестів.
 
-## Основні джерела
 
-- ArduinoMqttClient MQTT/QoS/LWT API: <https://github.com/arduino-libraries/ArduinoMqttClient>
-- NimBLE-Arduino security/characteristic API: <https://github.com/h2zero/NimBLE-Arduino>
-- Adafruit BME280: <https://github.com/adafruit/Adafruit_BME280_Library>
-- openHAB не потрібен: вебпанель та API запускаються безпосередньо в проєкті.
